@@ -90,6 +90,8 @@ class MovieAdapter(
         }
     }
 
+
+
     interface RvItemClickListener {
         fun itemClick(position: Int, movie: Movie)
         fun addToFavourites(position: Int, item: Movie)

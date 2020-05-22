@@ -45,8 +45,8 @@ object ServiceBuilder {
 
 interface PostApi {
 
-    @GET("movie/top_rated")
-    suspend fun getPopularMoviesList(@Query("api_key") apiKey: String): Response<MoviesResponse>
+    @GET("movie/popular")
+    suspend fun getPopularMoviesList(@Query("api_key") apiKey: String, @Query("page") page: Int): Response<MoviesResponse>
 
     @GET("movie/{movie_id}")
     suspend fun getMovie(
@@ -60,20 +60,20 @@ interface PostApi {
 //        @Query("session_id") sessionId: String
 //    ): Response<MoviesResponse>
 //
-//    @POST("account/{account_id}/favorite")
-//    suspend fun addRemoveFavourites(
-//        @Query("api_key") apiKey: String,
-//        @Query("session_id") sessionId: String,
-//        @Body fav: LikedMovie
-//    ): Response<StatusResponse>
-//
-//    @GET("movie/{movie_id}/account_states")
-//    suspend fun getMovieStates(
-//        @Path("movie_id") movieId: Int,
-//        @Query("api_key") apiKey: String,
-//        @Query("session_id") sessionId: String
-//    ): Response<MovieStatus>
-//
+    @POST("account/{account_id}/favorite")
+    suspend fun addRemoveFavourites(
+        @Query("api_key") apiKey: String,
+        @Query("session_id") sessionId: String,
+        @Body fav: LikedMovie
+    ): Response<StatusResponse>
+
+    @GET("movie/{movie_id}/account_states")
+    suspend fun getMovieStates(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String,
+        @Query("session_id") sessionId: String
+    ): Response<MovieStatus>
+
 //    @GET("authentication/token/new")
 //    suspend fun createRequestToken(@Query("api_key") apiKey: String): Response<Token>
 //
